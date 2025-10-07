@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects — Hnin Wai Khaing</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <header class="site-header">
+        <div class="container nav">
+        <div class="brand">Hnin Wai Khaing</div>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title">Projects</h1>
+
+        <!-- Filter buttons (optional) -->
+        <div style="text-align:center;margin-bottom:1rem">
+        <button class="btn ghost" data-filter="all">All</button>
+        <button class="btn ghost" data-filter="ml">ML / NLP</button>
+        <button class="btn ghost" data-filter="viz">Visualization</button>
+        <button class="btn ghost" data-filter="sql">SQL / Data</button>
+        </div>
+
+        <div class="project-grid">
+        <!-- Sentiment -->
+        <article class="card" id="sentiment" data-tags="ml viz">
+            <div class="shot-browser">
+                <img src="images/sentiment_dashboard.png" alt="Sentiment dashboard">
+            </div>
+            
+            <div class="content">
+            <h3>Sentiment-Driven Product Recommendation</h3>
+            <p>Scored reviews (TextBlob + TF-IDF), recommended similar products, and built a Chart.js dashboard with Flask API for filtered downloads.</p>
+            <div class="tags"><span class="tag">NLP</span><span class="tag">Flask</span><span class="tag">Chart.js</span></div>
+            <div class="actions">
+                <a class="btn primary" href="#" target="_blank">Live Demo</a>
+                <a class="btn ghost" href="https://github.com/Kha998/Sentiment-product-Recommendation-System" target="_blank">Source Code</a>
+            </div>
+            </div>
+
+        </article>
+
+        
+
+
+        
+
+        <!-- D3 -->
+        <article class="card" id="ed" data-tags="viz">
+            <div class="shot-browser">
+                <img src="images/medical_DV.png" alt="Healthcare ED dashboard">
+            </div>
+        
+            <div class="content">
+            <h3>Healthcare ED Metrics Monitor (D3.js)</h3>
+            <p>Real-time wait times & occupancy tracking with WebSockets and responsive D3 visualizations; SLA alerts.</p>
+            <div class="tags"><span class="tag">D3.js</span><span class="tag">WebSockets</span></div>
+            <div class="actions">
+                <a class="btn primary" href="#" target="_blank">Demo</a>
+                <a class="btn ghost" href="https://github.com/Kha998/Medical-Facilities-Data-Visualization-Dashboard" target="_blank">Source Code</a>
+            </div>
+            </div>
+
+            
+        </article>
+
+        <!-- Amazon Prime Content Trends -->
+            <article class="card">
+            <div class="shot-browser">
+                <img src="images/amazon_dashboard.png" alt="Amazon Prime Dashboard">
+            </div>
+            <div class="content">
+                <h3>Amazon Prime Content Trends & Profit Dynamics</h3>
+                <p>Tableau dashboards uncover content performance, profitability, and subscription growth patterns.</p>
+                <div class="tags">
+                <span class="tag">Tableau</span>
+                <span class="tag">Data Visualization</span>
+                </div>
+                <div class="actions">
+                <a class="btn primary" href="amazon.html">Details</a>
+
+                </div>
+            </div>
+            </article>
+
+            <!-- Hospital Service Utilization -->
+        <article class="card">
+        <div class="shot-browser">
+            <img src="images/hospital_dashboard.png" alt="Hospital Service Utilization">
+        </div>
+        <div class="content">
+            <h3>Hospital Service Utilization & Cost Analysis</h3>
+            <p>Power BI dashboards integrated with SQL to analyze costs, patient flow, and resource utilization.</p>
+            <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Business Intelligence</span>
+            </div>
+            <div class="actions">
+            <a class="btn primary" href="hospital.html">Details</a>
+            <a class="btn ghost" href="https://github.com/Kha998/Big-Data-Business-Intelligence" target="_blank">Source Code</a>
+
+            </div>
+        </div>
+        </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+        <span>© <span id="year"></span> Hnin Wai Khaing</span>
+        <a class="btn ghost" href="index.html">← Back to Home</a>
+        </div>
+    </footer>
+
+    <!-- Tiny filter JS (optional) -->
+    <script>
+        document.querySelectorAll('[data-filter]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const f = btn.getAttribute('data-filter');
+            document.querySelectorAll('.project-grid .card').forEach(c=>{
+            const tags = (c.dataset.tags||'').split(' ');
+            c.style.display = (f==='all'||tags.includes(f)) ? '' : 'none';
+            });
+            document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('primary'));
+            btn.classList.add('primary');
+        });
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
